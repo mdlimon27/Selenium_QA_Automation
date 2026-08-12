@@ -12,7 +12,7 @@ public class ExceptionHaling {
 
 	public static void main(String[] Args) {
 		
-		WebDriver driver=null; //Declaring driver variable here (Making the driver variable instance variable) so it can be accessed by any block (Try or Catch or finally)
+		WebDriver driver=null; //Declaring driver variable here so it can be accessed by any block (Try or Catch or finally)
 		
 		try {
 			System.out.println("Try Block Executed"); //Always executes
