@@ -1,5 +1,6 @@
 package myP;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -9,21 +10,41 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class TestCase104 {
 	
 	public static void main(String[] Args) {
-		String Result;
-		try {
-			Result=testcase104("11732","EAST NORWICH NY");
-		} catch (Exception e) {	}
+		String Result, vExpectedCity, vZipcode;
 		
-		try {
-			Result=testcase104("11372","JACKSON HEIGHTS NY");
-		} catch (Exception e1) {
-			}
+		String[] aZipcode= {"11732","11372","11436","11765"};
+		String[] aExpectedCity= {"EAST NORWICH NY","JACKSON HEIGHTS NY","JAMAICA NY","MILL NECK NY"};
+		
+		//vZipcode="11732";
+		//vExpectedCity="EAST NORWICH NY";
+		int count=aZipcode.length;
+		System.out.println(count);
+		
+		for(int i=0;i<count;i++) {
+			
+			
+			try {
+				Result=testcase104(aZipcode[i],aExpectedCity[i]);
+			} catch (Exception e) {	}
+		}
+		
+		
+		
+		
 		}
 		
 	
 	
 	
 	public static String testcase104(String pZipcode,String pExpectedCity) {
+		
+		try {
+			Runtime.getRuntime().exec("taskkill /F /IM msedge.exe");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		WebDriver driver=new EdgeDriver();
 		driver.get("https://tools.usps.com/zip-code-lookup.htm");
 		driver.manage().window().maximize();
